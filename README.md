@@ -30,3 +30,16 @@ Precio casi no se mueve aunque se negocien *muchísimas* acciones.
 La barra azul no distingue entre esos casos. Solo dice "el precio bajó tanto por ciento".
 
 Si tu pregunta real es "¿se negociaron muchas acciones esta semana?", eso necesita el dato de volumen, que es una columna aparte y no está en este gráfico. Podría añadírtelo si te interesa verlo junto al resto.
+
+# Example 
+
+En el 10/07: el IVVB11 cayó −0,62 %, pero el mercado americano en realidad aportó +1,10 % (subió). Lo que arrastró el precio hacia abajo fue el real fortaleciéndose (−1,21 % de contribución cambiaria).
+ Sin el gráfico dirías "el IVVB11 bajó, el mercado debe andar mal" — y estarías equivocado: el mercado subió, fue la moneda.
+
+Dos límites que conviene tener presentes al usarlo:
+
+*El componente gris (local/residuo) no es interpretable como una causa*. Cuando es grande, significa que ni el mercado ni el dólar explican bien ese movimiento — puede ser ruido, liquidez de B3 o desajustes de los datos. No lo leas como "efecto Brasil"; léelo como "esto el modelo no lo explica".
+
+*Es atribución estadística, no causa comprobada*. El gráfico reparte el movimiento entre factores correlacionados; no prueba que el S&P causó nada. Para movimientos semanales normales es una guía razonable; para semanas muy ruidosas, tómalo como orientación, no como veredicto.
+
+Con eso en mente, sí: el gráfico es una herramienta legítima para responder cada semana "¿esto vino del mercado americano o del dólar?", que era justo la pregunta con la que empezaste.
