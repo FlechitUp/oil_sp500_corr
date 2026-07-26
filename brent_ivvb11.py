@@ -79,6 +79,10 @@ def graficar(precio, contrib, ret, n=16):
         axd.bar(x, v, bottom=np.where(v >= 0, pos, neg), color=col[c], label=c, width=0.7)
         pos += np.where(v >= 0, v, 0); neg += np.where(v < 0, v, 0)
     axd.plot(x, obs.values, "ko", markersize=5, label="IVVB11 (movimiento)", zorder=5)
+    for xi, yi in zip(x, obs.values):
+        axd.annotate(f"{yi:+.2f}%", (xi, yi), textcoords="offset points",
+                     xytext=(0, -12 if yi >= 0 else 8), ha="center",
+                     fontsize=7.5, fontweight="bold", color="#000")
     axd.axhline(0, color="black", linewidth=0.8)
     axd.set_xticks(x); axd.set_xticklabels(fechas, rotation=45, ha="right", fontsize=8)
     axd.set_ylabel("Contribucion al retorno semanal (%)")
