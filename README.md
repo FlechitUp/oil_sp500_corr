@@ -43,3 +43,7 @@ Dos límites que conviene tener presentes al usarlo:
 *Es atribución estadística, no causa comprobada*. El gráfico reparte el movimiento entre factores correlacionados; no prueba que el S&P causó nada. Para movimientos semanales normales es una guía razonable; para semanas muy ruidosas, tómalo como orientación, no como veredicto.
 
 Con eso en mente, sí: el gráfico es una herramienta legítima para responder cada semana "¿esto vino del mercado americano o del dólar?", que era justo la pregunta con la que empezaste.
+
+# Run
+.\fin_env\Scripts\Activate.ps1  
+python brent_ivvb11.py
