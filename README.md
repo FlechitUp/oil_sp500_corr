@@ -9,6 +9,7 @@ El punto negro es cuánto subió o bajó el IVVB11 esa semana. Las barras de col
 ⬜ Gris = local/ruido (lo que no explican los otros dos)
 
 Las barras se suman hasta el punto negro. Así, de un vistazo, ves quién mandó cada semana.
+<img width="1950" height="1350" alt="descomposicion_ivvb11" src="https://github.com/user-attachments/assets/ecdeac76-3ab1-47f9-b82d-b33213b8e257" />
 
 # Interpretation
 
