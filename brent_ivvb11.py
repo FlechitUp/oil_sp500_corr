@@ -3,7 +3,7 @@ Descomposicion de los retornos del IVVB11 en sus factores estructurales,
 con panel de PRECIO encima para ver nivel y movimiento a la vez.
 
 IVVB11 ≈ IVV (USD) × USD/BRL. Sus retornos se reparten en:
-mercado americano (IVV), tipo de cambio (USD/BRL) y componente local.
+mercado americano (IVV), tipo de cambio (USD/BRL) y componente Residual (local).
 
 Frecuencia SEMANAL (viernes): a diario el desfase horario entre B3, el FX y
 EE.UU. rompe la relacion cambiaria (beta_FX colapsa a ~0). En semanal el
@@ -40,7 +40,7 @@ def descomponer(ret):
     contrib = pd.DataFrame({
         "S&P 500 (IVV)": m.params["IVV"] * ret["IVV"],
         "USD/BRL": m.params["USDBRL"] * ret["USDBRL"],
-        "Local (residuo)": m.resid + m.params["const"],
+        "Rresidual (local)": m.resid + m.params["const"],
     }, index=ret.index)
     return m, contrib
 
@@ -49,7 +49,7 @@ def importancia(ret, m):
     c_us = m.params["IVV"] * ret["IVV"]; c_fx = m.params["USDBRL"] * ret["USDBRL"]
     vt = ret["IVVB11"].var()
     return pd.Series({"S&P 500 (IVV)": c_us.var()/vt, "USD/BRL": c_fx.var()/vt,
-                      "Covarianza": 2*c_us.cov(c_fx)/vt, "Local / no explicado": m.resid.var()/vt})
+                      "Covarianza": 2*c_us.cov(c_fx)/vt, "Rresidual (local) / no explicado": m.resid.var()/vt})
 
 
 def graficar(precio, contrib, ret, n=16):
@@ -58,7 +58,7 @@ def graficar(precio, contrib, ret, n=16):
     obs = ret["IVVB11"].tail(n) * 100
     x = np.arange(len(sub))
     fechas = [d.strftime("%d/%m/%y") for d in sub.index]
-    col = {"S&P 500 (IVV)": "#1F618D", "USD/BRL": "#E67E22", "Local (residuo)": "#95A5A6"}
+    col = {"S&P 500 (IVV)": "#1F618D", "USD/BRL": "#E67E22", "Rresidual (lcoal)": "#95A5A6"}
 
     fig, (axp, axd) = plt.subplots(2, 1, figsize=(13, 9), sharex=True,
                                    gridspec_kw={"height_ratios": [1, 1.3]})
@@ -74,7 +74,7 @@ def graficar(precio, contrib, ret, n=16):
 
     # --- panel inferior: DESCOMPOSICION (movimiento) ---
     pos = np.zeros(len(sub)); neg = np.zeros(len(sub))
-    for c in ["S&P 500 (IVV)", "USD/BRL", "Local (residuo)"]:
+    for c in ["S&P 500 (IVV)", "USD/BRL", "Rresidual (local)"]:
         v = sub[c].values
         axd.bar(x, v, bottom=np.where(v >= 0, pos, neg), color=col[c], label=c, width=0.7)
         pos += np.where(v >= 0, v, 0); neg += np.where(v < 0, v, 0)
@@ -99,7 +99,7 @@ if __name__ == "__main__":
 
     print(f"Frecuencia: {FREQ} | {ret.index[0]:%d/%m/%Y} a {ret.index[-1]:%d/%m/%Y} (n={len(ret)})\n")
     print(f"beta IVV = {m.params['IVV']:.3f} | beta USD/BRL = {m.params['USDBRL']:.3f} | R2 = {m.rsquared:.3f}\n")
-    print("Importancia relativa (varianza):")
+    print("Descomposición de la varianza del retorno")
     for k, v in importancia(ret, m).items():
         print(f"  {k:<22} {v*100:6.1f}%")
     print("\nUltimas 4 semanas:")
