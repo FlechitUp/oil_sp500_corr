@@ -4,6 +4,8 @@ Dashboard local, educativo y descriptivo construido con Streamlit y Plotly. Desc
 
 <img width="1818" height="689" alt="image" src="https://github.com/user-attachments/assets/091a4862-7a4e-4fa4-a094-73f0bb131a7d" />
 
+<img width="1808" height="916" alt="image" src="https://github.com/user-attachments/assets/352698cb-25a7-45c9-b6cf-845f1d9818d3" />
+
 
 ## Instalación (PowerShell)
 
