@@ -2,6 +2,9 @@
 
 Dashboard local, educativo y descriptivo construido con Streamlit y Plotly. Descompone retornos semanales logarítmicos de IVVB11 entre IVV, USD/BRL y alpha/residuo; incluye drawdowns, regresiones rolling, tracking difference, anomalías, métricas de riesgo/retorno y correlación con una cartera manual.
 
+<img width="1818" height="689" alt="image" src="https://github.com/user-attachments/assets/091a4862-7a4e-4fa4-a094-73f0bb131a7d" />
+
+
 ## Instalación (PowerShell)
 
 ```powershell
