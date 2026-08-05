@@ -15,6 +15,8 @@ pip install -r requirements.txt
 ## Ejecución
 
 ```powershell
+.\fin_env\Scripts\Activate.ps1
+
 streamlit run app.py
 ```
 
